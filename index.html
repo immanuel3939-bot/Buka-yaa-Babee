@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 10 Month Anniversary ❤️</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #ffe6eb;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Animasi Hati Melayang */
+    .heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: float 4s linear infinite;
+      opacity: 0.7;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+
+    /* Kartu Ucapan */
+    .container {
+      text-align: center;
+      z-index: 10;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+    }
+    .card {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .envelope-icon {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+    .title {
+      color: #ff4d6d;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .subtext {
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* Konten Surat (Tersembunyi Awalnya) */
+    .letter-content {
+      display: none;
+      animation: fadeIn 1s forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .photo {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin: 15px 0;
+    }
+    .message {
+      color: #444;
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      white-space: pre-line;
+      font-weight: 600;
+    }
+    .btn {
+      background: #ff4d6d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Musik Background -->
+  <audio id="bg-music" loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung pemutaran audio.
+  </audio>
+
+  <div class="container">
+    <!-- Tampilan Sebelum Diklik -->
+    <div class="card" id="open-card" onclick="openLetter()">
+      <div class="envelope-icon">✉️</div>
+      <div class="title">Ada pesan untukmu!</div>
+      <div class="subtext">Klik untuk membuka surat ❤️</div>
+    </div>
+
+    <!-- Isi Surat Setelah Diklik -->
+    <div class="card letter-content" id="letter">
+      <div class="title">Happy 10 month anniversary relationship baby 🖤</div>
+      
+      <!-- Foto Pasangan -->
+      <img src="foto.jpg" alt="Foto Dino dan Macan" class="photo">
+      
+      <!-- Pesan Ucapan -->
+      <p class="message">Dino sayang sama macan 🦖🐯</p>
+
+      <button class="btn" onclick="alert('I Love You Too! 😘❤️')">Balas Pesan</button>
+    </div>
+  </div>
+
+  <script>
+    // Fitur Buka Surat & Mainkan Musik
+    function openLetter() {
+      document.getElementById('open-card').style.display = 'none';
+      document.getElementById('letter').style.display = 'block';
+      
+      // Putar lagu saat surat dibuka
+      var music = document.getElementById('bg-music');
+      music.play().catch(function(error) {
+        console.log("Autoplay diblokir oleh browser, butuh interaksi pengguna tambahan:", error);
+      });
+    }
+
+    // Animasi Hati Melayang
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
